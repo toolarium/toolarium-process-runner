@@ -66,7 +66,8 @@ public class ProcessMonitorServiceImpl implements ProcessMonitorService {
 
 
     /**
-     * @see com.github.toolarium.process.runner.monitor.ProcessMonitorService#registerProcess(com.github.toolarium.process.runner.dto.monitor.IProcessMonitorInformation, com.github.toolarium.process.runner.dto.process.IProcessInformation)
+     * @see com.github.toolarium.process.runner.monitor.ProcessMonitorService#registerProcess(com.github.toolarium.process.runner.dto.process.IProcessInformation, 
+     *      com.github.toolarium.process.runner.dto.monitor.IProcessMonitorInformation)
      */
     @Override
     public UUID registerProcess(IProcessInformation processInformation, IProcessMonitorInformation processRunnerMonitor) {
@@ -84,7 +85,7 @@ public class ProcessMonitorServiceImpl implements ProcessMonitorService {
 
 
     /**
-     * @see com.github.toolarium.process.runner.monitor.ProcessMonitorService#unrregisterProcess(java.util.UUID)
+     * @see com.github.toolarium.process.runner.monitor.ProcessMonitorService#unregisterProcess(java.util.UUID)
      */
     @Override
     public void unregisterProcess(UUID uuid) {

@@ -1,5 +1,5 @@
 /*
- * ProcessRunnerDataStorage‫Impl.java
+ * ProcessRunnerDataStorageImpl.java
  *
  * Copyright by toolarium, all rights reserved.
  */
@@ -22,25 +22,22 @@ import org.slf4j.LoggerFactory;
 
 
 /**
- * Implements the {@link IProcessRunnerDataStorage}.
- *  
+ * Implements the IProcessRunnerDataStorage.
+ * 
  * @author patrick
  */
-public class ProcessRunnerDataStorage‫Impl implements IProcessRunnerDataStorage {
-    private static final Logger LOG = LoggerFactory.getLogger(ProcessRunnerDataStorage‫Impl.class);
+public class ProcessRunnerDataStorageImpl implements IProcessRunnerDataStorage {
+    private static final Logger LOG = LoggerFactory.getLogger(ProcessRunnerDataStorageImpl.class);
     private transient volatile Map<UUID, IProcessRuntimeEnvironment> processRuntimeEnvironmentMap;
     private transient volatile ConcurrentLinkedQueue<IProcessRunnerAction> processActionQueue;
-
     
     /**
-     * Constructor for ProcessRunnerData
-     *
+     * Constructor for ProcessRunnerDataStorageImpl
      */
-    public ProcessRunnerDataStorage‫Impl() {
+    public ProcessRunnerDataStorageImpl() {
         processRuntimeEnvironmentMap = new ConcurrentHashMap<>();
         processActionQueue = new ConcurrentLinkedQueue<>();
     }
-
 
     /**
      * @see com.github.toolarium.process.runner.storage.IProcessRunnerDataStorage#add(com.github.toolarium.process.runner.dto.process.IProcessInformation, com.github.toolarium.process.runner.dto.monitor.IProcessMonitorInformation)
@@ -66,11 +63,11 @@ public class ProcessRunnerDataStorage‫Impl implements IProcessRunnerDataStorag
             IProcessInformation processInformation = processRuntimeEnvironment.getProcessInformation();
             LOG.debug("Unregistered process runtime environment [" + processInformation.getName() + "] on port [" + processInformation.getPort() + "] with resource [" + processInformation.getResourcePath() + "] -> as [" + uuid + "]");
         }
-        
+
         return processRuntimeEnvironment;
     }
 
-    
+
     /**
      * @see com.github.toolarium.process.runner.storage.IProcessRunnerDataStorage#getQueue()
      */
@@ -88,31 +85,29 @@ public class ProcessRunnerDataStorage‫Impl implements IProcessRunnerDataStorag
         return processRuntimeEnvironmentMap.keySet();
     }
 
-    
+
     /**
      * @see com.github.toolarium.process.runner.storage.IProcessRunnerDataStorage#getProcessInformation(java.util.UUID)
      */
     @Override
     public IProcessInformation getProcessInformation(UUID uuid) {
-        IProcessRuntimeEnvironment processRuntimeEnvironment = processRuntimeEnvironmentMap.get(uuid); 
+        IProcessRuntimeEnvironment processRuntimeEnvironment = processRuntimeEnvironmentMap.get(uuid);
         if (processRuntimeEnvironment != null) {
             return processRuntimeEnvironment.getProcessInformation();
         }
         return null;
     }
 
-    
+
     /**
      * @see com.github.toolarium.process.runner.storage.IProcessRunnerDataStorage#getProcessMonitorInformation(java.util.UUID)
      */
     @Override
     public IProcessMonitorInformation getProcessMonitorInformation(UUID uuid) {
-        IProcessRuntimeEnvironment processRuntimeEnvironment = processRuntimeEnvironmentMap.get(uuid); 
+        IProcessRuntimeEnvironment processRuntimeEnvironment = processRuntimeEnvironmentMap.get(uuid);
         if (processRuntimeEnvironment != null) {
             return processRuntimeEnvironment.getProcessMonitorInformation();
         }
         return null;
     }
-
-
 }

@@ -5,7 +5,7 @@
  */
 package com.github.toolarium.process.runner.storage;
 
-import com.github.toolarium.process.runner.storage.impl.ProcessRunnerDataStorage‫Impl;
+import com.github.toolarium.process.runner.storage.impl.ProcessRunnerDataStorageImpl;
 
 /**
  * Defines the process runner data factory
@@ -30,7 +30,7 @@ public final class ProcessRunnerDataStorageFactory {
      * Constructor
      */
     private ProcessRunnerDataStorageFactory() {
-        processRunnerData = new ProcessRunnerDataStorage‫Impl();
+        processRunnerData = new ProcessRunnerDataStorageImpl();
     }
 
     

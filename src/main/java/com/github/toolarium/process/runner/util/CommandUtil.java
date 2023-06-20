@@ -165,7 +165,7 @@ public final class CommandUtil {
         if (systemProperties != null && !systemProperties.isEmpty()) {
             for (String key  : systemProperties.keySet()) {
                 if (key != null && !key.isBlank()) {
-                    if (!parameters.isEmpty()) {
+                    if (!parameters.toString().isEmpty()) {
                         parameters.append(" ");
                         logParameters.append(" ");
                     }
@@ -189,7 +189,7 @@ public final class CommandUtil {
         // prepare parameters
         List<ISecuredValue<String>> processParameters = inputProcessEnvironment.getProcessParameters();
         for (ISecuredValue<String> parameter : processParameters) {
-            if (!parameters.isEmpty()) {
+            if (!parameters.toString().isEmpty()) {
                 parameters.append(" ");
                 logParameters.append(" ");
             }
